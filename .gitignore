@@ -3,11 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# editor
+# pycharm editor
 .idea/
-
-db.sqlite3
-
 
 # C extensions
 *.so
