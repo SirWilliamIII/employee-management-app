@@ -10,12 +10,17 @@ class Employee(models.Model):
         ('F', 'Female'),
     )
 
+    #   All Datefields format '%m/%d/%y', '10/25/06'
     emp_no = models.IntegerField(primary_key=True)
     birth_date = models.DateField()
     first_name = models.CharField(max_length=14)
     last_name = models.CharField(max_length=16)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     hire_date = models.DateField()
+
+    def __str__(self):
+        name = 'first_name=%s, last_name=%s' % (self.first_name, self.last_name)
+        return name
 
     class Meta:
         db_table = 'employees'
