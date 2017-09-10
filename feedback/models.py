@@ -9,7 +9,3 @@ class Feedback(models.Model):
     comment = models.CharField(max_length=1000)
     has_read = models.BooleanField(default=False)
 
-    class Meta:
-        db_table = 'feedback'
-
-
