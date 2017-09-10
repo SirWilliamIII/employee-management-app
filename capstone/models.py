@@ -4,11 +4,17 @@ from django.db import models
 
 
 class Employee(models.Model):
+
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
+
     emp_no = models.IntegerField(primary_key=True)
     birth_date = models.DateField()
     first_name = models.CharField(max_length=14)
     last_name = models.CharField(max_length=16)
-    gender = models.CharField(max_length=1)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     hire_date = models.DateField()
 
     class Meta:
@@ -28,7 +34,6 @@ class DeptEmp(models.Model):
     dept_no = models.ForeignKey(Departments, db_column='dept_no')
     from_date = models.DateField()
     to_date = models.DateField()
-    id = models.BigAutoField(primary_key=True)
 
     class Meta:
         db_table = 'dept_emp'
@@ -40,7 +45,6 @@ class DeptManager(models.Model):
     emp_no = models.ForeignKey('Employee', db_column='emp_no')
     from_date = models.DateField()
     to_date = models.DateField()
-    id = models.BigAutoField(primary_key=True)
 
     class Meta:
         db_table = 'dept_manager'
@@ -48,11 +52,10 @@ class DeptManager(models.Model):
 
 
 class Salaries(models.Model):
-    emp_no = models.ForeignKey(Employee, db_column='emp_no')
+    emp_no = models.ForeignKey(Employee, db_column='emp_no', related_name='employeeSalaries')
     salary = models.IntegerField()
     from_date = models.DateField()
     to_date = models.DateField()
-    id = models.BigAutoField(primary_key=True)
 
     class Meta:
         db_table = 'salaries'
@@ -60,11 +63,10 @@ class Salaries(models.Model):
 
 
 class Titles(models.Model):
-    emp_no = models.ForeignKey(Employee, db_column='emp_no')
+    emp_no = models.ForeignKey(Employee, db_column='emp_no', related_name='employeeTitles')
     title = models.CharField(max_length=50)
     from_date = models.DateField()
     to_date = models.DateField(blank=True, null=True)
-    id = models.BigAutoField(primary_key=True)
 
     class Meta:
         db_table = 'titles'
