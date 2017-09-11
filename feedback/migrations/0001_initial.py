@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('category', models.CharField(default='General', max_length=50)),
                 ('email', models.CharField(max_length=150)),
                 ('comment', models.CharField(max_length=1000)),
-                ('has_read', models.BooleanField(default=False)),
+                ('is_read', models.BooleanField(default=False)),
             ],
             options={
                 'db_table': 'feedback',
