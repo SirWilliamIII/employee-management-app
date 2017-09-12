@@ -26,8 +26,8 @@ class Employee(models.Model):
 
 
 class Departments(models.Model):
-    department_id = models.IntegerField(primary_key=True)
-    department_name = models.CharField(unique=True, max_length=50)
+    dept_id = models.IntegerField(primary_key=True)
+    dept_name = models.CharField(unique=True, max_length=50)
 
     class Meta:
         db_table = 'departments'
@@ -35,28 +35,28 @@ class Departments(models.Model):
 
 class DeptEmp(models.Model):
     employee_id = models.ForeignKey('Employee', db_column='emp_no')
-    department_id = models.ForeignKey('Departments', db_column='dept_no')
+    dept_id = models.ForeignKey('Departments', db_column='dept_no')
     from_date = models.DateField()
     to_date = models.DateField()
 
     class Meta:
         db_table = 'dept_emp'
-        unique_together = (('employee_id', 'department_id'),)
+        unique_together = (('employee_id', 'dept_id'),)
 
 
 class DeptManager(models.Model):
-    department_id = models.ForeignKey('Departments', db_column='dept_no')
+    dept_id = models.ForeignKey('Departments', db_column='dept_no')
     employee_id = models.ForeignKey('Employee', db_column='emp_no')
     from_date = models.DateField()
     to_date = models.DateField()
 
     class Meta:
         db_table = 'dept_manager'
-        unique_together = (('employee_id', 'department_id'),)
+        unique_together = (('employee_id', 'dept_id'),)
 
 
 class Salaries(models.Model):
-    employee_id = models.ForeignKey(Employee, db_column='employee_id', related_name='employeeSalaries')
+    emp_no = models.ForeignKey(Employee, db_column='emp_no',)
     salary = models.IntegerField()
     from_date = models.DateField()
     to_date = models.DateField()
@@ -66,10 +66,10 @@ class Salaries(models.Model):
 
 
 class Titles(models.Model):
-    employee_id = models.ForeignKey(Employee, db_column='emp_no', related_name='employeeTitles')
+    emp_no = models.ForeignKey(Employee, db_column='emp_no',)
     title = models.CharField(max_length=50)
     from_date = models.DateField()
-    to_date = models.DateField(blank=True, null=True)
+    to_date = models.DateField(null=True)
 
     class Meta:
         db_table = 'titles'

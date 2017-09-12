@@ -16,7 +16,7 @@ class FeedbackAdmin(ModelAdmin):
 
     def get_form(self, request, obj=None, **kwargs):
         if obj is None:
-            return FeedbackForm
+            return FeedbackAddForm
         else:
             return super(FeedbackAdmin, self).get_form(request, obj, **kwargs)
 
