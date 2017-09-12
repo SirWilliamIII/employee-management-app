@@ -1,38 +1,18 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
-from django import forms
 from .models import Feedback
-
-
-class FeedbackAddForm(forms.ModelForm):
-
-    class Meta:
-        model = Feedback
-        fields = ('name', 'subject', 'category', 'email', 'comment')
-
-
-class FeedbackForm(forms.ModelForm):
-
-    class Meta:
-        model = Feedback
-        fields = '__all__'
-
-
-def mark_feedback_as_read(queryset):
-    for employeeFeedback in queryset:
-        employeeFeedback.is_read = True
-        employeeFeedback.save()
-
-
-mark_feedback_as_read.short_description = 'Mark selected as read'
+from .forms import FeedbackForm, FeedbackAddForm
+from .actions import mark_feedback_as_read
 
 
 class FeedbackAdmin(ModelAdmin):
     form = FeedbackForm
-    search_fields = ('name', 'category', 'email', 'subject')
-    list_display = ('name', 'category', 'email', 'subject')
-    save_on_top = True
-    actions_on_bottom = False
+    search_fields = ('name', 'category', 'email', 'subject', 'created_on')
+    list_display = ('name', 'category', 'email', 'subject', 'has_read', 'created_on')
+    list_editable = ('has_read',)
+    readonly_fields = ('created_on',)
+    actions = [mark_feedback_as_read]
+    ordering = ('-created_on',)
 
     def get_form(self, request, obj=None, **kwargs):
         if obj is None:
