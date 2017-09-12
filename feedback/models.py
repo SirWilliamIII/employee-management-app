@@ -9,11 +9,11 @@ class Feedback(models.Model):
     category = models.CharField(max_length=50, default='General')
     email = models.CharField(max_length=150)
     comment = models.CharField(max_length=1000)
-
+    has_read = models.BooleanField(default=False)
+    created_on = models.DateField(null=False)
 
     def __str__(self):
         return self.email
 
     class Meta:
         db_table = 'feedback'
-
