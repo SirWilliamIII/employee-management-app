@@ -1,3 +1,5 @@
+# function that runs in admin.py(?)
+
 def mark_feedback_as_read(modeladmin, request, queryset):
     for employeeFeedback in queryset:
         employeeFeedback.is_read = True
