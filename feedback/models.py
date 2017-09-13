@@ -16,6 +16,7 @@ class Feedback(models.Model):
     )
 
     name = models.CharField(max_length=100)
+    emp_no = models.IntegerField()
     subject = models.CharField(max_length=250)
     category = models.CharField(max_length=50, default='1', choices=CATEGORY_CHOICES)
     email = models.CharField(max_length=150, validators=[EmailValidator(), MinLengthValidator(7)])

@@ -65,7 +65,7 @@ class Salaries(models.Model):
         db_table = 'salaries'
 
 
-class Titles(models.Model):
+class Titles( models.Model):
     emp_no = models.ForeignKey(Employee, db_column='emp_no',)
     title = models.CharField(max_length=50)
     from_date = models.DateField()

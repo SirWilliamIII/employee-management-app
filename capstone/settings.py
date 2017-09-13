@@ -28,7 +28,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS =  [
+    'flat_responsive',
     'capstone',
     'feedback',
     'django.contrib.admin',

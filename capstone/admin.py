@@ -10,7 +10,7 @@ class MyAdminSite(AdminSite):
     site_title = ugettext_lazy('HR Buddy')
 
     # Text to put at top of each page --h1
-    site_header = ugettext_lazy('HR Buddy admin')
+    site_header = ugettext_lazy('HR Buddy')
 
     # Text to put at the top of the admin index page
     index_title = ugettext_lazy('HR BUDDY')
