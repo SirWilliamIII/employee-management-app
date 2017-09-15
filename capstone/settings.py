@@ -119,3 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AWS_HEADERS = {
+    'Expires': 'Thu, 31 Dec 2020 23:59:00 GMT'
+}
+
+AWS_STORAGE_BUCKET_NAME =

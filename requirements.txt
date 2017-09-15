@@ -1,8 +1,13 @@
 Django==1.11.5
 django-flat-responsive==1.4.1
+django-stdimage==2.4.2
 django-storages==1.6.5
+olefile==0.44
+Pillow==4.2.1
 postgres==2.2.1
+progressbar2==3.34.2
 psycopg2==2.7.3.1
 python-dateutil==2.6.1
+python-utils==2.2.0
 pytz==2017.2
 six==1.10.0

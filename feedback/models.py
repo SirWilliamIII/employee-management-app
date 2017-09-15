@@ -4,7 +4,6 @@ from django.db import models
 
 from django.core.validators import EmailValidator, MinLengthValidator
 
-
 class Feedback(models.Model):
 
     CATEGORY_CHOICES = (
